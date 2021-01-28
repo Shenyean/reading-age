@@ -13,6 +13,14 @@ class App(ttk.Frame):
         super().__init__(master, *args, **kwargs)
         self.master = master
 
+        self.entry = tk.Entry(fg="black", bg ="white", width =100)
+        self.entry.pack()
+
+        self.button_frame = ttk.Frame(self, padding = (0,20 , 0 , 0))
+        self.button_frame.pack()
+        self.button = ttk.Button(self.button_frame, text = 'Check', padding ='20 10')
+        self.button.pack()
+
         
 
 
