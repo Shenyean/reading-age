@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 import requests
 import random
 import urllib.request
+import textacy
 #from PIL import Image, ImageTk
 
 #from LabelLink import Labellink
@@ -16,13 +17,25 @@ class App(ttk.Frame):
 
         self.entry = tk.Entry(fg="black", bg ="white", width =100)
         self.entry.pack()
+        # self.entry_text = 
 
         self.button_frame = ttk.Frame(self, padding = (0,20 , 0 , 0))
         self.button_frame.pack()
-        self.button = ttk.Button(self.button_frame, text = 'Check', padding ='20 10')
+        self.button = ttk.Button(self.button_frame, text = 'Check', padding ='20 10',command=self.check_age_range)
         self.button.pack()
 
-        
+        self.age_range = tk.StringVar()
+        self.age_range_label = ttk.Label(self, textvariable=self.age_range)
+        self.age_range_label.pack()
+        self.age_range.set('3-5')
+
+    def check_age_range(self):
+        entry_text = self.entry.get()
+        doc = textacy.Doc(entry_text)
+        ts = textacy.TextStats(doc)
+        grade = str(ts.flesch_kincaid_grade_level)
+        self.age_range.set(grade)
+
 
 
 def main():
