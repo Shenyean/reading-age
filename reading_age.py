@@ -5,20 +5,20 @@ import random
 import urllib.request
 #from PIL import Image, ImageTk
 
-#from LabelLink import Labellink 
+#from LabelLink import Labellink
+
 
 class App(ttk.Frame):
-    #constructor 
+    #constructor
     def __init__(self, master, *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.master = master
-
-        
 
 
 def main():
     root = tk.Tk()
     root.title('Reading Age')
+    root.iconphoto(False, tk.PhotoImage(file='book.png'))
     App(root, padding=20, width=800, height=500).pack()
     root.mainloop()
 
