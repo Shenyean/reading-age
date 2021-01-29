@@ -3,7 +3,7 @@ import tkinter.ttk as ttk
 import requests
 import random
 import urllib.request
-import textacy
+import textstat
 #from PIL import Image, ImageTk
 
 #from LabelLink import Labellink
@@ -31,9 +31,8 @@ class App(ttk.Frame):
 
     def check_age_range(self):
         entry_text = self.entry.get()
-        doc = textacy.Doc(entry_text)
-        ts = textacy.TextStats(doc)
-        grade = str(ts.flesch_kincaid_grade_level)
+        
+        grade = textstat.flesch_reading_ease(entry_text)
         self.age_range.set(grade)
 
 
